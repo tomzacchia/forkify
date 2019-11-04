@@ -1,7 +1,6 @@
-// Global app controller
+import axios from 'axios';
+import Search from './models/Search';
 
-import x from './test';
+const search = new Search('pizza');
 
-const testVariable = 23;
-
-console.log(x);
+search.getResults();
