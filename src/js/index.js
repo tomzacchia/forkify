@@ -37,5 +37,13 @@ const searchHandler = async () => {
 elements.searchForm.addEventListener('submit', e => {
   e.preventDefault();
   searchHandler();
-})
+});
 
+elements.paginationContainer.addEventListener('click', e => {
+  const BTN = e.target.closest('.btn-inline');
+  if (BTN) {
+    const goToPage = parseInt(BTN.dataset.goto, 10);
+    searchView.clearResultsContainer();
+    searchView.renderResults(state.search.result, goToPage);
+  }
+})
