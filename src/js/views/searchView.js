@@ -10,15 +10,32 @@ export const clearResultsContainer = () => {
   elements.searchResultsList.innerHTML = '';
 }
 
+const spliceRecipeTitle = (title, limit = 17) => {
+  const newTitle = [];
+
+  if (title.length > limit) {
+    title.split(' ').reduce( (acc, curr) => {
+      if (acc + curr.length <= limit) {
+        newTitle.push(curr);
+      }
+      return acc + curr.length;
+    }, 0 );
+
+    return `${newTitle.join(' ')} ...`;
+  }
+
+  return title;
+}
+
 const renderRecipe = recipe => {
   const htmlElement = `
     <li>
       <a class="results__link" href="#${recipe.recipe_id}">
           <figure class="results__fig">
-              <img src="${recipe.image_url}" alt="${recipe.title}">
+              <img src="${recipe.image_url}" alt="${spliceRecipeTitle(recipe.title)}">
           </figure>
           <div class="results__data">
-              <h4 class="results__name"> ${recipe.title} </h4>
+              <h4 class="results__name"> ${spliceRecipeTitle(recipe.title)} </h4>
               <p class="results__author"> ${recipe.publisher} </p>
           </div>
       </a>

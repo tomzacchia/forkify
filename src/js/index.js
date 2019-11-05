@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Search from './models/Search';
-import { elements } from './views/base';
+import { elements, renderSpinner, removeSpinner } from './views/base';
 import * as searchView from './views/searchView';
 
 /* Global sate of the app 
@@ -23,14 +23,14 @@ const searchHandler = async () => {
     // 3. prepare UI for results
     searchView.clearInput();
     searchView.clearResultsContainer();
+    renderSpinner(elements.searchResultsContainer);
 
     // 4. search results for recipes
     await state.search.getResults();
 
     // 5. render results on UI
-
-    const recipes = state.search.result;
-    searchView.renderResults(recipes);
+    removeSpinner();    
+    searchView.renderResults(state.search.result);
   }
 }
 
