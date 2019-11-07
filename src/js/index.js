@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Search from './models/Search';
+import Recipe from './models/Recipe';
 import { elements, renderSpinner, removeSpinner } from './views/base';
 import * as searchView from './views/searchView';
 
@@ -12,6 +13,7 @@ import * as searchView from './views/searchView';
 
 const state = {};
 
+// Search controller
 const searchHandler = async () => {
   // 1. Get query from view
   const query = searchView.getInput();
@@ -47,3 +49,30 @@ elements.paginationContainer.addEventListener('click', e => {
     searchView.renderResults(state.search.result, goToPage);
   }
 })
+
+
+// Recipe Controller
+const recipeController = async () => {
+  // Get ID from URL
+  const id = window.location.hash.replace('#', '');
+
+  if (id) {
+    // Prepare UI for changes
+
+    // Create new recipe object
+    state.recipe = new Recipe(id);
+
+    // Get Recipe data
+    await state.recipe.getRecipe();
+
+    // Calculate servings and cooking time
+    state.recipe.cookingTime();
+    state.recipe.calculateServings();
+
+    // Render recipe
+    console.log(state.recipe);
+  }
+
+}
+
+window.addEventListener('hashchange', recipeController);
