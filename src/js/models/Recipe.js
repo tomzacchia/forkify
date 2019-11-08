@@ -38,7 +38,9 @@ export default class Recipe {
       'teaspoons': 'tsp',
       'teaspoon': 'tsp',
       'cups': 'cup',
-      'pounds': 'pound'
+      'pounds': 'pound',
+      'kg' : 'kg',
+      'g' : 'g'
     };
   
     const newIngredients = this.ingredients.map( el => {

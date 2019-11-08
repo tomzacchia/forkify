@@ -3,6 +3,7 @@ import Search from './models/Search';
 import Recipe from './models/Recipe';
 import { elements, renderSpinner, removeSpinner } from './views/base';
 import * as searchView from './views/searchView';
+import * as recipeView from './views/recipeView';
 
 /* Global sate of the app 
   - search object
@@ -70,6 +71,8 @@ const recipeController = async () => {
 
   if (id) {
     // Prepare UI for changes
+    recipeView.clearRecipeContainer();
+    renderSpinner(elements.recipeContainer);
 
     // Create new recipe object
     state.recipe = new Recipe(id);
@@ -85,8 +88,11 @@ const recipeController = async () => {
       state.recipe.calculateServings();
 
       // Render recipe
-      console.log(state.recipe);
+      removeSpinner();
+      recipeView.renderRecipe(state.recipe);
+
     } catch (error) {
+      console.log(error);
       alert('Error loading recipe');
     }
 
