@@ -27,12 +27,18 @@ const searchHandler = async () => {
     searchView.clearResultsContainer();
     renderSpinner(elements.searchResultsContainer);
 
-    // 4. search results for recipes
-    await state.search.getResults();
+    try {
+      // 4. search results for recipes
+      await state.search.getResults();
 
-    // 5. render results on UI
-    removeSpinner();    
-    searchView.renderResults(state.search.result);
+      // 5. render results on UI
+      removeSpinner();    
+      searchView.renderResults(state.search.result);
+    } catch (error) {
+      alert('Error loading recipes');
+      removeSpinner();  
+    }
+
   }
 }
 
@@ -40,6 +46,12 @@ elements.searchForm.addEventListener('submit', e => {
   e.preventDefault();
   searchHandler();
 });
+
+// TESTING
+// window.addEventListener('load', e => {
+//   e.preventDefault();
+//   searchHandler();
+// });
 
 elements.paginationContainer.addEventListener('click', e => {
   const BTN = e.target.closest('.btn-inline');
@@ -61,18 +73,28 @@ const recipeController = async () => {
 
     // Create new recipe object
     state.recipe = new Recipe(id);
+    window.recipe = state.recipe;
 
-    // Get Recipe data
-    await state.recipe.getRecipe();
+    try {
+      // Get Recipe data and parse ingredients
+      await state.recipe.getRecipe();
+      state.recipe.parseIngredients();
 
-    // Calculate servings and cooking time
-    state.recipe.cookingTime();
-    state.recipe.calculateServings();
+      // Calculate servings and cooking time
+      state.recipe.cookingTime();
+      state.recipe.calculateServings();
 
-    // Render recipe
-    console.log(state.recipe);
+      // Render recipe
+      console.log(state.recipe);
+    } catch (error) {
+      alert('Error loading recipe');
+    }
+
   }
 
 }
 
-window.addEventListener('hashchange', recipeController);
+// window.addEventListener('hashchange', recipeController);
+// window.addEventListener('load', recipeController);
+
+['hashchange','load'].forEach(event => window.addEventListener(event, recipeController));
