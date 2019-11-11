@@ -48,12 +48,6 @@ elements.searchForm.addEventListener('submit', e => {
   searchHandler();
 });
 
-// TESTING
-// window.addEventListener('load', e => {
-//   e.preventDefault();
-//   searchHandler();
-// });
-
 elements.paginationContainer.addEventListener('click', e => {
   const BTN = e.target.closest('.btn-inline');
   if (BTN) {
@@ -61,7 +55,7 @@ elements.paginationContainer.addEventListener('click', e => {
     searchView.clearResultsContainer();
     searchView.renderResults(state.search.result, goToPage);
   }
-})
+});
 
 
 // Recipe Controller
@@ -97,10 +91,6 @@ const recipeController = async () => {
     }
 
   }
-
 }
-
-// window.addEventListener('hashchange', recipeController);
-// window.addEventListener('load', recipeController);
 
 ['hashchange','load'].forEach(event => window.addEventListener(event, recipeController));
