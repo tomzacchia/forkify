@@ -98,11 +98,13 @@ const recipeController = async () => {
 // Handling recipe serving button clicks
 elements.recipeContainer.addEventListener('click', event => {
   if (event.target.matches('.btn-decrease, .btn-decrease *')) {
-    state.recipe.updateServings('dec');
+    if (state.recipe.servings > 1) {
+      state.recipe.updateServings('dec');
+      recipeView.updateServingsIngredients(state.recipe);
+    }
   } else if (event.target.matches('.btn-increase, .btn-increase *')) {
     state.recipe.updateServings('inc');
+    recipeView.updateServingsIngredients(state.recipe);
   };
 
-  recipeView.clearRecipeContainer();
-  recipeView.renderRecipe(state.recipe);
 })
