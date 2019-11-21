@@ -1,4 +1,7 @@
 # [Forkify.io](https://rawcdn.githack.com/tomzacchia/forkify/d134aa1519d22cef9d905b74fa0dcd2d5f244d7f/dist/index.html#46956)
+
+![App](https://github.com/tomzacchia/forkify/blob/master/app_img.png)
+
 Forkify.io is an applicaton made using HTML, CSS, JS and Webpack. In developing this project the following concepts were explored in detail:
 - **Webpack**: Writing Webpack configuration file from scratch
 - **MVC Pattern**: Separating concerns through the implementation of the Model View Controller design pattern
