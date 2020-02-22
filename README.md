@@ -1,4 +1,4 @@
-# [Forkify.io](https://rawcdn.githack.com/tomzacchia/forkify/d134aa1519d22cef9d905b74fa0dcd2d5f244d7f/dist/index.html)
+# [Forkify.io](https://rawcdn.githack.com/tomzacchia/forkify/8f75d4d018c030c48ba0a2254e91364f141d7ffb/dist/index.html)
 
 ![App](https://github.com/tomzacchia/forkify/blob/master/app_img.png)
 
