@@ -1,11 +1,17 @@
-# [Forkify.io](https://rawcdn.githack.com/tomzacchia/forkify/d134aa1519d22cef9d905b74fa0dcd2d5f244d7f/dist/index.html#46956)
+# [Forkify.io](https://rawcdn.githack.com/tomzacchia/forkify/d134aa1519d22cef9d905b74fa0dcd2d5f244d7f/dist/index.html)
+
+![App](https://github.com/tomzacchia/forkify/blob/master/app_img.png)
+
 Forkify.io is an applicaton made using HTML, CSS, JS and Webpack. In developing this project the following concepts were explored in detail:
 - **Webpack**: Writing Webpack configuration file from scratch
 - **MVC Pattern**: Separating concerns through the implementation of the Model View Controller design pattern
-- **API Requests via Axios**: Making asynchronous API requests using the Axios library
+- **API Requests via Axios**: Making asynchronous API requests using the Axios library **Imporant note below**
 - **Event Delegation**: Delegating handling user interactions to parent nodes
 This project was created as part of the video series 
 [The Complete Javascript Course 2019 by Jonas Schmedtmann](https://www.udemy.com/course/the-complete-javascript-course/).
+
+# NOTE (IMPORTANT)
+- I made use of Forkify-api by Jonas Schmedtmann which is based on food2fork API however it is **limited to the following keywords: "pizza", "bacon" and "broccoli"**. This API is used in place of food2fork since multiple students have had problems with food2fork, namely trouble routing their requests via a proxy to avoid CORS errors, as such Jonas made a simpler version of the API
 
 # Lessons learned
 - **Advanced JS Concepts**:  Throughout working on this project it became evident that in the past I had taken a lot of advanced JS concepts for granted, such as closures, IIFEs, Modueles etc... Jonas does a great job of explaining these concepts in depth, which allowed me to make use of them throughout the application. What I enjoyed most about working on the application was the use of Modules, in particular how the use of Modules allows developers to separate concerns and isolate code.
